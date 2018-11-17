@@ -10,5 +10,5 @@ top_politics = newsapi.get_top_headlines(q='politics', sources=sources)
 top_sport = newsapi.get_top_headlines(q='sports', sources=sources)
 top_tech = newsapi.get_top_headlines(q='technology', sources=sources)
 
-# print(top_tech)
+print(top_tech)
 # print(weight.weighter("cnn", 7))
