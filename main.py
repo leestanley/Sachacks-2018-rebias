@@ -10,5 +10,11 @@ top_politics = newsapi.get_top_headlines(q='politics', sources=sources)
 top_sport = newsapi.get_top_headlines(q='sports', sources=sources)
 top_tech = newsapi.get_top_headlines(q='technology', sources=sources)
 
-# print(top_tech)
+categories = [top_economy, top_politics, top_sport, top_tech]
+final = []
+for x in categories:
+    for y in x['articles']:
+        final.append((y['title'], y['url']))
+
+print(final)
 # print(weight.weighter("cnn", 7))
