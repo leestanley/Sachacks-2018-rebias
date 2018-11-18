@@ -3,7 +3,6 @@ import io
 import base64
 from flask import Flask, render_template
 from graph import build_graph
-plt.xkcd()
 
 app = Flask(__name__)
 
@@ -11,11 +10,11 @@ app = Flask(__name__)
 @app.route('/graphs')
 def graphs():
     # These coordinates could be stored in DB
-    x1 = [0, 1, 2, 3, 4]
+    x1 = 5
     y1 = [10, 30, 40, 5, 50]
-    x2 = [0, 1, 2, 3, 4]
+    x2 = 5
     y2 = [50, 30, 20, 10, 50]
-    x3 = [0, 1, 2, 3, 4]
+    x3 = 5
     y3 = [0, 30, 10, 5, 30]
 
     graph1_url = build_graph(x1, y1)
