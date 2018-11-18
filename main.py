@@ -105,7 +105,7 @@ def checkSession():
 def home():
   print(session.get("currentWeight"))
   print(session.get("doneList"))
-  return "hi"
+  return render_template("index.html")
 
 
 @app.route("/api/updateWeight")

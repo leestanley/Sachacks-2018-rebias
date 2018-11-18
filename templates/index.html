@@ -5,8 +5,8 @@
 <head>
   <title> Rebias - Home </title>
   <meta charset="utf-8">
-  <link rel="icon" href="/assets/images/favion.png">
-  <link rel="stylesheet" type="text/css" href="/assets/css/index.css"> </link>
+  <link rel="icon" href="{{ url_for('static', filename='images/favion.png') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Bitter|Oswald|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,15 +15,15 @@
 
 <body>
   <nav class="navbar">
-      <a href="index.html">
-        <img id="logo" src="/assets/images/rebiaslogo.png">
+      <a href="/">
+        <img id="logo" src="{{ url_for('static', filename='images/rebiaslogo.png') }}">
       </a>
       <button type="button" class="btn-signup">Sign In</button>
   </nav>
 
   <div class="welcome-parallax">
     <a id="title-welcome"> REBIAS YOUR 
-      <span id=wordbias> BIAS! </span>
+      <span id="wordbias"> BIAS! </span>
       <a id="subtitle-welcome"> Discover your political view.</a>
     </a>
   </div>
@@ -55,7 +55,7 @@
     </a> 
   <br><hr class="style1">
     <div class="news-container">
-      <img id="gradient" src="/assets/images/gradient.png">
+      <img id="gradient" src="{{ url_for('static', filename='images/gradient.png') }}">
       <a id="title-article"> McConnell Tells Trump a Criminal Justice Bill Is Not Likely This Year </a>
       <hr class="style2">
       <p class="sample-content">
@@ -69,7 +69,7 @@
     </div>
 
     <div class="news-container">
-      <img id="gradient" src="/assets/images/gradient.png">
+      <img id="gradient" src="{{ url_for('static', filename='images/gradient.png') }}">
       <a id="title-article"> McConnell Tells Trump a Criminal Justice Bill Is Not Likely This Year </a>
       <hr class="style2">
       <p class="sample-content">
@@ -83,7 +83,7 @@
     </div>
 
     <div class="news-container">
-      <img id="gradient" src="/assets/images/gradient.png">
+      <img id="gradient" src="{{ url_for('static', filename='images/gradient.png') }}">
       <a id="title-article"> McConnell Tells Trump a Criminal Justice Bill Is Not Likely This Year </a>
       <hr class="style2">
       <p class="sample-content">
