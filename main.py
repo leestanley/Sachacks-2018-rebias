@@ -56,7 +56,9 @@ def get_news_by_category(category):
     for x in excludeList(y['articles'], session.get("doneList")):
       final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id']})
   
-  session["doneList"].append(final[0]['url'])
+  oldDone = session["doneList"].copy()
+  oldDone.append(final[0]['url'])
+  session["doneList"] = oldDone
   return weightranker(currentWeight, final)
 
 
