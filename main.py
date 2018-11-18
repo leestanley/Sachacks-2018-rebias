@@ -1,8 +1,13 @@
 from newsapi import NewsApiClient
 from flask import Flask, url_for, render_template, request, jsonify, session
-import weight, os, menuScraping
+import weight, os, menuScraping, graph, weightranking
 from datetime import datetime
 from datascience import Table
+
+import matplotlib.pyplot as plt
+import io
+import base64
+from graph import build_graph
 
 bias = Table().read_table("bias.csv").select("News Source", "Horizontal Rank")
 news_sources = bias.column("News Source")
@@ -13,7 +18,7 @@ for x in range(0, (len(news_sources))):
 
 
 app = Flask(__name__)
-newsapi = NewsApiClient(api_key='ba3a266737d849878755f3a855d0d5be')
+newsapi = NewsApiClient(api_key='672b5745f9aa4ecbbc044a0025fc28d3')
 
 sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune"
 sourcesarray = sources.split(", ")
@@ -102,6 +107,8 @@ def checkSession():
   if not ("doneList" in session):
     session["doneList"] = []
   
+  if not ("srcdict" in session):
+    session["srcdict"] = {}
 
 @app.route("/")
 def home():
@@ -123,6 +130,9 @@ def updateWeight():
     oldDone = session["doneList"].copy()
     oldDone.append(url)
     session["doneList"] = oldDone
+
+    newDict = weightranking.update_dict(session["srcdict"], source, user_rating)
+    session["srcdict"] = newDict
 
     return str(new_weight)
 
@@ -154,6 +164,22 @@ def getWeight():
   if request.method == "GET":
     return str(session["currentWeight"])
 
+@app.route('/graph1')
+def graph1():
+    checkSession()
+
+    source_biases = weightranking.source_user_biases(session["srcdict"])
+    x1 = []
+    y1 = []
+    for x in source_biases:
+      x1.append(x[0])
+      y1.append(x[1])
+    graph1_url = graph.build_graph(x1, y1)
+    
+    if request.method == "GET":
+      return render_template('graph.html',
+                           graph1=graph1_url)
+
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=6789);
+  app.run(port=6789)

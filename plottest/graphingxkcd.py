@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 import numpy as np
 
-plt.xkcd()
+# plt.xkcd()
 
 fig = plt.figure()
 ax = fig.add_subplot(1, 1, 1)
