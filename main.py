@@ -62,11 +62,6 @@ def get_news_by_category(category):
 
 def get_user_weight(source, rating, currWeight = 50):
   cWeight = weight.weighter(currWeight, source, rating)
-  if (cWeight < 0):
-    cWeight = 0
-  if (cWeight > 100):
-    cWeight = 100
-  
   currentWeight = cWeight
   session["currentWeight"] = cWeight
   return currentWeight
