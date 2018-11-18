@@ -1,9 +1,9 @@
 from newsapi import NewsApiClient
 from flask import Flask, url_for, render_template, request, jsonify, session
 import weight, os
-
-
+from datetime import datetime
 from datascience import Table
+
 bias = Table().read_table("bias.csv").select("News Source", "Horizontal Rank")
 news_sources = bias.column("News Source")
 news_rankings = bias.column("Horizontal Rank")
@@ -14,8 +14,6 @@ for x in range(0, (len(news_sources))):
 
 app = Flask(__name__)
 newsapi = NewsApiClient(api_key='c38f8442c3f14c59acd996b41d7f4d4c')
-
-# session.clear() (if need to clear session)
 
 currentWeight = 50
 sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune"
@@ -55,8 +53,10 @@ def get_news_by_category(category):
 
   final = []
   for y in top_news:
-    for x in y['articles']:
+    for x in excludeList(y['articles'], session.get("doneList")):
       final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id']})
+  
+  session["doneList"].append(final[0]['url'])
   return weightranker(currentWeight, final)
 
 
@@ -66,10 +66,20 @@ def get_user_weight(source, rating, currWeight = 50):
   session["currentWeight"] = cWeight
   return currentWeight
 
-
 def weight_from_mean(currweight, source):
   return abs((currweight + news_dict[source]) - 50)
 
+def excludeList(original, exclude):
+  if (exclude is None):
+    return original
+  else:
+    new_list = []
+
+    for item in original:
+      if not (item['url'] in exclude):
+        new_list.append(item)
+    
+    return new_list
 
 def weightranker(currweight, top_news):  # when get_news_by_category is called, return value goes into this function at top_news
   for i in range(1, len(top_news)):
@@ -79,18 +89,34 @@ def weightranker(currweight, top_news):  # when get_news_by_category is called, 
           top_news[i], top_news[j] = top_news[j], top_news[i]
   return top_news[:5]
 
+def checkSession():
+  if not ("startUp" in session):
+    session["startUp"] = datetime.today()
+  else:
+    if ((datetime.today() - session["startUp"]).days > 10):
+      session.clear()
+      session["startUp"] = datetime.today()
+    
+  if not ("currentWeight" in session):
+    session["currentWeight"] = 50
+  else:
+    currentWeight = session["currentWeight"]
+  
+  if not ("doneList" in session):
+    print("NEW LIST")
+    session["doneList"] = []
+  
+
 @app.route("/")
 def home():
   print(session.get("currentWeight"))
+  print(session.get("doneList"))
   return "hi"
 
 
 @app.route("/api/updateWeight")
 def updateWeight():
-  if not ("currentWeight" in session):
-    session["currentWeight"] = 50
-  else:
-    currentWeight = session["currentWeight"]
+  checkSession()
 
   if request.method == "GET":
     source = request.args.get("source")
@@ -103,16 +129,17 @@ def updateWeight():
 
 @app.route("/api/getNews")
 def getNews():
-  if not ("currentWeight" in session):
-    session["currentWeight"] = 50
-  else:
-    currentWeight = session["currentWeight"]
+  checkSession()
 
   if request.method == "GET":
     category = request.args.get("category")
 
     if (category):
       return jsonify(get_news_by_category(category))
+
+@app.route("/api/articleCheck")
+def articleCheck():
+  checkSession()
 
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)

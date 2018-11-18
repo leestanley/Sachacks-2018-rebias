@@ -168,10 +168,10 @@ def getSoup(url):
     return content
 
 
-def main():
-    url = 'https://www.apnews.com/8fd63a7696fe4bb3855bda2d4b3e7943'
-    print(getSoup(url))
+# def main():
+#     url = 'https://www.apnews.com/8fd63a7696fe4bb3855bda2d4b3e7943'
+#     print(getSoup(url))
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
