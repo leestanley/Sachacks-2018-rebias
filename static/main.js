@@ -35,9 +35,9 @@ function loadFeed(template, category, popupTemplate) {
         $(tempItm).css("background-image", "url(" + data.image + ")");
         $(tempItm).attr("id", index);
         bodyP = $(".sample-content", $(tempItm));
-        if (data.content) {
-          bodyP.html(data.content);
-        } else {
+        //if (data.content) {
+        //  bodyP.html(data.content);
+        //} else {
           bodyP.html("<b>Loading...</b>");
           $.ajax({
             url: "./api/scrapText",
@@ -50,7 +50,7 @@ function loadFeed(template, category, popupTemplate) {
               document.getElementById(index.toString()).getElementsByClassName("sample-content")[0].innerHTML = content.substring(0, 600) + "...";
             }
           });
-        }
+        //}
         $("#feed").append(tempItm);
 
         // switch (category) {
@@ -99,7 +99,6 @@ function loadFeed(template, category, popupTemplate) {
                 user_rating: slider.value
               },
               success: function(content) {
-                console.log(data.id);
                 updateBar(parseInt(content));
                 $(popup).remove();
                 loadFeed(template, category, popupTemplate);
@@ -107,9 +106,9 @@ function loadFeed(template, category, popupTemplate) {
             });
           });
 
-          if (data.content) {
-            bodyP.html(data.content);
-          } else {
+          //if (data.content) {
+          //  bodyP.html(data.content);
+          //} else {
             bodyP.html("<b>Loading...</b>");
             $.ajax({
               url: "./api/scrapText",
@@ -122,7 +121,7 @@ function loadFeed(template, category, popupTemplate) {
                 document.getElementById("p" + index.toString()).getElementsByClassName("long-content")[0].innerHTML = content;
               }
             });
-          }
+          //}
         });
 
         $("#above_feed").show();

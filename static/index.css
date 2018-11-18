@@ -109,7 +109,7 @@ body {
 }
 
 .submit-btn {
-    position: relative !important;
+    position: absolute !important;
     z-index: 1000;
 }
 
@@ -117,8 +117,8 @@ body {
     color: #2ecc71;
     border-color: #2ecc71;
     width: 300px !important;
-    left: 500px !important;
-    bottom: -500px;
+    left: 900px !important;
+    bottom: 30px;
 }
 
 .btn-signup:hover {
@@ -299,9 +299,9 @@ body {
 }
 
 .pop-container {
-    position: relative;
-    max-width: 50em;
-    height: 480px;
+    position: fixed;
+    width: 70em;
+    height: 50em;
     padding: 20px;
     background-color: #ecf0f1;
     border-radius: 10px;
@@ -339,7 +339,7 @@ footer{
     background-color: rgba(0, 0, 0, 0);
     overflow-x:hidden;
     overflow-y: auto;
-    height: 40%;
+    height: 60%;
     width: 100%;
 }
 
