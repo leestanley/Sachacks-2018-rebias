@@ -341,7 +341,7 @@ footer{
     background-color: rgba(0, 0, 0, 0);
     overflow-x:hidden;
     overflow-y: auto;
-    height: 80%;
+    height: 60%;
     width: 100%;
 }
 
@@ -395,18 +395,6 @@ footer{
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
-}
-
-#rating-zero {
-    position: absolute;
-    left: 100px;
-    bottom: 0px;
-}
-
-#rating-ten {
-    position: absolute;
-    left: 670px;
-    bottom: 0px;
 }
 
 /* loading anim credit to: Sampson on StackOverflow

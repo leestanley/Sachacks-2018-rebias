@@ -48,11 +48,12 @@ def get_news_by_category(category):
     top_news.append(newsapi.get_top_headlines(q='phone', sources=sources))
     top_news.append(newsapi.get_top_headlines(q='Silicon', sources=sources))
     top_news.append(newsapi.get_top_headlines(q='Samsung', sources=sources))
-  print(jsonify(top_news))
+  
   final = []
   for y in top_news:
-    for x in excludeList(y['articles'], session.get("doneList")):
-      final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id'], 'content': x['content']})
+    if (not (y['articles'] is None)):
+      for x in excludeList(y['articles'], session.get("doneList")):
+        final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id'], 'content': x['content']})
   
   return weightranker(session["currentWeight"], final)
 
@@ -74,6 +75,8 @@ def excludeList(original, exclude):
     for item in original:
       if not (item['url'] in exclude):
         new_list.append(item)
+    
+    return new_list
   
     
 
@@ -146,4 +149,4 @@ def scrapText():
 
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=6722)
+  app.run(port=6762)

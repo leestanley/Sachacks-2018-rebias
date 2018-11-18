@@ -7,10 +7,13 @@
   <meta charset="utf-8">
   <link rel="icon" href="{{ url_for('static', filename='favion.png') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rangeslider.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Bitter|Oswald|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="{{ url_for('static', filename='main.js') }}"></script>
+  <script src="{{ url_for('static', filename='rangeslider.js') }}"></script>
+  <script src="{{ url_for('static', filename='rangeslider.min.js') }}"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -85,11 +88,8 @@
 
       </p>
       <div class="slide-container">
-        <p> Your rating on this article.</p>
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-        <p id="rating-five"> 5 </p>
-        <p id="rating-zero"> 0</p>
-        <p id="rating-ten"> 10</p>
+        <p id="rating_label">Your rating on this article: 5</p>
+        <input type="range" min="1" max="10" value="5" id="userRating">
       </div>
     </div>
   </div>
