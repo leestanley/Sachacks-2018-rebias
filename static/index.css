@@ -1,6 +1,6 @@
-::-webkit-scrollbar { 
-    display: none; 
-}
+/* ::-webkit-scrollbar {
+    display: none;
+} */
 
 body {
     margin: 0;
@@ -79,7 +79,7 @@ body {
     position: relative;
 }
 
-.btn-signup, .readmore, .submit-btn {
+.btn-signup, .submit-btn {
     position: relative;
     background-color: transparent;
     background-image: none;
@@ -88,7 +88,17 @@ body {
     width: 100px;
     height: 40px;
     left: -40px;
+}
 
+.readmore {
+    position: relative;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 5px;
+    outline-width: thin;
+    width: 100px;
+    height: 40px;
+    bottom: -29px;
 }
 
 .btn-signup {
@@ -103,7 +113,7 @@ body {
     z-index: 1000;
 }
 
-.readmore, .submit-btn{
+.submit-btn{
     color: #2ecc71;
     border-color: #2ecc71;
     width: 300px !important;
@@ -167,7 +177,7 @@ body {
     filter: grayscale(100%);
     color: rgba(0, 0, 0, 0);
     outline: 0;
-    
+
 }
 
 
@@ -223,7 +233,7 @@ body {
     width: 90.5%;
     background-image: url(placeholder.jpg);
     background-position-x: 0;
-    background-size: 500px;
+    background-size: 600px;
     background-repeat: no-repeat;
     position: relative;
     padding: 10px;
@@ -260,18 +270,19 @@ body {
     float: right;
     color: #34495e;
     margin-right: 120px;
-    font-size: 30px;
+    font-size: 20px;
     word-wrap: break-word;
 }
 
 .sample-content {
-    width: 70%;
+    min-width: 300px;
     text-align: justify;
     text-justify: inter-word;
     height: 60%;
     margin-left: 30em;
     position: relative;
     bottom: -10%;
+    overflow: hidden;
 }
 
 .popup-content{
@@ -297,7 +308,7 @@ body {
     padding: 20px 10px;
     left: 30%;
     top: 20%;
-    margin: -70px 0 0 -170px; 
+    margin: -70px 0 0 -170px;
 }
 
 footer{
@@ -396,3 +407,29 @@ footer{
     bottom: 0px;
 }
 
+/* loading anim credit to: Sampson on StackOverflow
+    [https://stackoverflow.com/questions/1964839/how-can-i-create-a-please-wait-loading-animation-using-jquery]*/
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    max-width:  128px;
+    max-height: 128px;
+    filter:     grayscale(100%);
+    background: rgba( 255, 255, 255, 0.75 ) 
+                url('loading.gif') 
+                30% 30% 
+                no-repeat;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .modal {
+    display: block;
+}

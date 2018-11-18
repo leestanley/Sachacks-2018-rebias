@@ -55,7 +55,7 @@ def get_news_by_category(category):
     for x in excludeList(y['articles'], session.get("doneList")):
       final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id']})
   
-  return weightranker(currentWeight, final)
+  return weightranker(session["currentWeight"], final)
 
 
 def get_user_weight(source, rating, currWeight = 50):
@@ -137,4 +137,4 @@ def getNews():
 
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=5005)
+  app.run(port=5035)
