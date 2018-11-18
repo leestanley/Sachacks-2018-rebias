@@ -2,6 +2,7 @@ loadingFeed = false;
 function loadFeed(template, category) {
   loadingFeed = true;
 
+  $("body").addClass("loading");
   $("#feed").empty();
   $.ajax({
     url: "./api/getNews",
@@ -15,11 +16,27 @@ function loadFeed(template, category) {
         tempItm = $(template).clone();
         $("#title-article", $(tempItm)).text(data.title);
         $(tempItm).css("background-image", "url(" + data.image + ")");
-        //$(".sample-content").html(data.content.substring(0, 500));
+        if (data.content) {
+          $(".sample-content", $(tempItm)).html(data.content);
+        } else {
+          $(".sample-content", $(tempItm)).html("<b>Loading...</b>");
+
+          $.ajax({
+            url: "./api/scrapText",
+            type: "GET",
+            data: {
+              articleUrl: data.url
+            },
+            success: function(text) {
+              console.log(text);
+              $(".sample-content", $(tempItm)).html(text.substring(0, 100) + "...");
+            }
+          });
+        }
         $("#feed").append(tempItm);
 
         $(".readmore", $(tempItm)).click(function() {
-          
+          console.log(data.url);
         });
 
         $("#above_feed").show();
@@ -29,6 +46,7 @@ function loadFeed(template, category) {
         }, 500);
       });
 
+      $("body").removeClass("loading");
       loadingFeed = false;
     }
   });
@@ -51,13 +69,3 @@ $(window).on('load', function() {
     });
   });
 });
-
-$(document).on({
-  ajaxStart: function() {
-    $("body").addClass("loading");
-  },
-  
-  ajaxStop: function() {
-    $("body").removeClass("loading");
-  }
-})

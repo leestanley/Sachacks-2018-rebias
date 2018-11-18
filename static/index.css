@@ -96,10 +96,10 @@ body {
     background-image: none;
     border-radius: 5px;
     outline-width: thin;
-    width: 100px;
+    width: 200px;
     height: 40px;
     bottom: -29px;
-    left: -120px
+    left: 200px
 }
 
 .btn-signup {

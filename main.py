@@ -1,6 +1,6 @@
 from newsapi import NewsApiClient
 from flask import Flask, url_for, render_template, request, jsonify, session
-import weight, os
+import weight, os, menuScraping
 from datetime import datetime
 from datascience import Table
 
@@ -13,7 +13,7 @@ for x in range(0, (len(news_sources))):
 
 
 app = Flask(__name__)
-newsapi = NewsApiClient(api_key='c38f8442c3f14c59acd996b41d7f4d4c')
+newsapi = NewsApiClient(api_key='ba3a266737d849878755f3a855d0d5be')
 
 sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune"
 sourcesarray = sources.split(", ")
@@ -48,8 +48,7 @@ def get_news_by_category(category):
     top_news.append(newsapi.get_top_headlines(q='phone', sources=sources))
     top_news.append(newsapi.get_top_headlines(q='Silicon', sources=sources))
     top_news.append(newsapi.get_top_headlines(q='Samsung', sources=sources))
-
-
+  print(jsonify(top_news))
   final = []
   for y in top_news:
     for x in excludeList(y['articles'], session.get("doneList")):
@@ -75,8 +74,8 @@ def excludeList(original, exclude):
     for item in original:
       if not (item['url'] in exclude):
         new_list.append(item)
+  
     
-    return new_list
 
 def weightranker(currweight, top_news):  # when get_news_by_category is called, return value goes into this function at top_news
   for i in range(1, len(top_news)):
@@ -135,6 +134,16 @@ def getNews():
     if (category):
       return jsonify(get_news_by_category(category))
 
+@app.route("/api/scrapText")
+def scrapText():
+  checkSession()
+
+  if request.method == "GET":
+    articleUrl = request.args.get("articleUrl")
+
+    if (articleUrl):
+      return menuScraping.getSoup(articleUrl)
+
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=6505)
+  app.run(port=6722)
