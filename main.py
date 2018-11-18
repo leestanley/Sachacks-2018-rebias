@@ -97,7 +97,7 @@ def checkSession():
   if not ("startUp" in session):
     session["startUp"] = datetime.today()
   else:
-    if ((datetime.today() - session["startUp"]).days > 10):
+    if ((datetime.today() - session["startUp"]).days > 2:
       session.clear()
       session["startUp"] = datetime.today()
     
@@ -182,4 +182,4 @@ def graph1():
 
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=6791)
+  app.run(port=6792)
