@@ -15,7 +15,6 @@ for x in range(0, (len(news_sources))):
 app = Flask(__name__)
 newsapi = NewsApiClient(api_key='c38f8442c3f14c59acd996b41d7f4d4c')
 
-currentWeight = 50
 sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune"
 sourcesarray = sources.split(", ")
 
@@ -61,9 +60,8 @@ def get_news_by_category(category):
 
 def get_user_weight(source, rating, currWeight = 50):
   cWeight = weight.weighter(currWeight, source, rating)
-  currentWeight = cWeight
   session["currentWeight"] = cWeight
-  return currentWeight
+  return session["currentWeight"]
 
 def weight_from_mean(currweight, source):
   return abs((currweight + news_dict[source]) - 50)
@@ -98,11 +96,8 @@ def checkSession():
     
   if not ("currentWeight" in session):
     session["currentWeight"] = 50
-  else:
-    currentWeight = session["currentWeight"]
   
   if not ("doneList" in session):
-    print("NEW LIST")
     session["doneList"] = []
   
 
@@ -121,8 +116,8 @@ def updateWeight():
     url = request.args.get("url")
     source = request.args.get("source")
     user_rating = request.args.get("user_rating")
-
-    new_weight = get_user_weight(source, int(user_rating), currentWeight)
+    
+    new_weight = get_user_weight(source, int(user_rating), session.get("currentWeight"))
     session["currentWeight"] = new_weight
 
     oldDone = session["doneList"].copy()
