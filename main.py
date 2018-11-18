@@ -56,9 +56,6 @@ def get_news_by_category(category):
     for x in excludeList(y['articles'], session.get("doneList")):
       final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id']})
   
-  oldDone = session["doneList"].copy()
-  oldDone.append(final[0]['url'])
-  session["doneList"] = oldDone
   return weightranker(currentWeight, final)
 
 
@@ -121,12 +118,18 @@ def updateWeight():
   checkSession()
 
   if request.method == "GET":
+    url = request.args.get("url")
     source = request.args.get("source")
     user_rating = request.args.get("user_rating")
 
-  new_weight = get_user_weight(source, int(user_rating), currentWeight)
-  session["currentWeight"] = new_weight
-  return str(new_weight)
+    new_weight = get_user_weight(source, int(user_rating), currentWeight)
+    session["currentWeight"] = new_weight
+
+    oldDone = session["doneList"].copy()
+    oldDone.append(url)
+    session["doneList"] = oldDone
+
+    return str(new_weight)
 
 
 @app.route("/api/getNews")
@@ -138,10 +141,6 @@ def getNews():
 
     if (category):
       return jsonify(get_news_by_category(category))
-
-@app.route("/api/articleCheck")
-def articleCheck():
-  checkSession()
 
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
