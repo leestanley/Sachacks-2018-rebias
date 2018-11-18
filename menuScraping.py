@@ -7,7 +7,7 @@ def nyt(soup):
     soup_list = soup.select('.css-1ebnwsw')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -22,7 +22,7 @@ def guardian(soup):
     soup_list = soup.select('div > div > div > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -37,7 +37,7 @@ def bbc(soup):
     soup_list = soup.select('div > div > div > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -52,7 +52,7 @@ def econ(soup):
     soup_list = soup.select('article > div > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -67,7 +67,7 @@ def usa(soup):
     soup_list = soup.select('article > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -82,7 +82,7 @@ def fortune(soup):
     soup_list = soup.select('div > div > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -97,7 +97,7 @@ def hill(soup):
     soup_list = soup.select('article > div > div > div > div > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -127,7 +127,7 @@ def cnn(soup):
     soup_list = soup.select('.zn-body__paragraph')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
@@ -142,7 +142,7 @@ def ap(soup):
     soup_list = soup.select('div > div > div > p')
     soup_str = ''
     for x in soup_list:
-        soup_str += x.text + ' '
+        soup_str += x.text + '\n'
     final = ''
     for x in range(len(soup_str)):
         if ord(soup_str[x]) == 8217:
