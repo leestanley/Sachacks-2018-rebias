@@ -1,8 +1,13 @@
 from newsapi import NewsApiClient
+<<<<<<< HEAD
 from flask import Flask, url_for, render_template, request
 import weight
 
 app = Flask(__name__);
+=======
+import weight
+
+>>>>>>> 5c7f475ea20ffafe4435bc668af7b599c997e6ef
 newsapi = NewsApiClient(api_key='c38f8442c3f14c59acd996b41d7f4d4c')
 sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune, the-wall-street-journal"
 sourcesarray = sources.split(", ")
@@ -39,9 +44,12 @@ def get_user_weight(source, rating):
 a = get_news_by_category('politics')
 for x in a:
     print(x)
+<<<<<<< HEAD
 
 @app.route("/", methods = ["GET"])
 def home():
   pass
 
 @app.route("/api/")
+=======
+>>>>>>> 5c7f475ea20ffafe4435bc668af7b599c997e6ef
