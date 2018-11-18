@@ -99,6 +99,7 @@ body {
     width: 100px;
     height: 40px;
     bottom: -29px;
+    left: -120px
 }
 
 .btn-signup {
@@ -283,6 +284,7 @@ body {
     position: relative;
     bottom: -10%;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .popup-content{
@@ -417,12 +419,10 @@ footer{
     left:       0;
     height:     100%;
     width:      100%;
-    max-width:  128px;
-    max-height: 128px;
     filter:     grayscale(100%);
-    background: rgba( 255, 255, 255, 0.75 ) 
+    background: rgba( 255, 255, 255, 0.5 ) 
                 url('loading.gif') 
-                30% 30% 
+                50% 50% 
                 no-repeat;
 }
 

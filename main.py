@@ -53,7 +53,7 @@ def get_news_by_category(category):
   final = []
   for y in top_news:
     for x in excludeList(y['articles'], session.get("doneList")):
-      final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id']})
+      final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id'], 'content': x['content']})
   
   return weightranker(session["currentWeight"], final)
 
@@ -84,7 +84,7 @@ def weightranker(currweight, top_news):  # when get_news_by_category is called, 
       for j in range(i):
         if weight_from_mean(currweight, top_news[i]['id']) < weight_from_mean(currweight, top_news[j]['id']):
           top_news[i], top_news[j] = top_news[j], top_news[i]
-  return top_news[:5]
+  return top_news[:8]
 
 def checkSession():
   if not ("startUp" in session):
@@ -137,4 +137,4 @@ def getNews():
 
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=5035)
+  app.run(port=6505)

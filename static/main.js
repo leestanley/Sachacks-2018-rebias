@@ -15,10 +15,11 @@ function loadFeed(template, category) {
         tempItm = $(template).clone();
         $("#title-article", $(tempItm)).text(data.title);
         $(tempItm).css("background-image", "url(" + data.image + ")");
+        //$(".sample-content").html(data.content.substring(0, 500));
         $("#feed").append(tempItm);
 
         $(".readmore", $(tempItm)).click(function() {
-          console.log(data.url);
+          
         });
 
         $("#above_feed").show();
