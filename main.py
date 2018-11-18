@@ -18,14 +18,22 @@ def get_news_by_category(category):
 
 # for x in categories:
     for x in top_news['articles']:
-        final.append([x['title'], x['url'], x['source']['id']])
+        final.append({'title': x['title'], 'url': x['url'], 'image': x['urlToImage'], 'id': x['source']['id']})
     return final
-# currweight = 50
-# for x in final:
-#     currweight = weight.weighter(currweight, x[2], user_rating)
+
+
+global currweight
+currweight = 50
+
+
+def get_user_weight(source, rating):
+    currweight = weight.weighter(currweight, source, rating)
+    return currweight
 
 
 # print(currweight)
+
+
 a = get_news_by_category('politics')
 for x in a:
     print(x)
