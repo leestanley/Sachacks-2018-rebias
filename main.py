@@ -18,7 +18,7 @@ newsapi = NewsApiClient(api_key='c38f8442c3f14c59acd996b41d7f4d4c')
 # session.clear() (if need to clear session)
 
 currentWeight = 50
-sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune, the-wall-street-journal"
+sources = "cnn, the-new-york-times, bbc-news, the-guardian-uk, associated-press, usa-today, the-economist, the-hill, fortune"
 sourcesarray = sources.split(", ")
 
 def get_news_by_category(category):
@@ -51,8 +51,8 @@ def get_news_by_category(category):
     top_news.append(newsapi.get_top_headlines(q='phone', sources=sources))
     top_news.append(newsapi.get_top_headlines(q='Silicon', sources=sources))
     top_news.append(newsapi.get_top_headlines(q='Samsung', sources=sources))
-  
-  
+
+
   final = []
   for y in top_news:
     for x in y['articles']:
@@ -91,7 +91,7 @@ def updateWeight():
     session["currentWeight"] = 50
   else:
     currentWeight = session["currentWeight"]
-  
+
   if request.method == "GET":
     source = request.args.get("source")
     user_rating = request.args.get("user_rating")
@@ -107,7 +107,7 @@ def getNews():
     session["currentWeight"] = 50
   else:
     currentWeight = session["currentWeight"]
-  
+
   if request.method == "GET":
     category = request.args.get("category")
 
