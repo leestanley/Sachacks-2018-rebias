@@ -10,7 +10,7 @@ def build_graph(source, avgscore):
     plt.locator_params(integer=True)
     img = io.BytesIO()
     plt.tight_layout()
-    bar1 = plt.bar(source, avgscore, color='m', width=.5)
+    bar1 = plt.bar(source, avgscore, width=0.35, color='m', align='center')
     plt.xlabel('Source')
     plt.ylabel('Average Score Given')
     plt.title("Average Score Given per Source")
@@ -18,7 +18,7 @@ def build_graph(source, avgscore):
     plt.ylim((0, 10))
     for bar in bar1:
         height = bar.get_height()
-        plt.text(bar.get_x(), height, '%d' % int(height), ha='center', va='bottom')
+        plt.text(bar.get_x()+ (0.35/2), height, '%d' % float(height), ha='center', va='bottom')
     plt.savefig(img, format='png')
     img.seek(0)
     graph_url = base64.b64encode(img.getvalue()).decode()
