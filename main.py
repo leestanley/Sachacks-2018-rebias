@@ -59,7 +59,7 @@ def get_news_by_category(category):
   return weightranker(currentWeight, final)
 
 
-def get_user_weight(source, rating, currWeight):
+def get_user_weight(source, rating, currWeight = 50):
   cWeight = weight.weighter(currWeight, source, rating)
   currentWeight = cWeight
   session["currentWeight"] = cWeight
