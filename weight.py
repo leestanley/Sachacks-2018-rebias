@@ -11,7 +11,10 @@ for x in range(0, (len(news_sources))):
 
 def weighter(currweight, source, rating):
     horirank = bias.where("News Source", source).column("Horizontal Rank").item(0)
-    return currweight + (((rating - 5) / 10) * horirank)
+    if (currweight + (((rating - 5) / 10) * horirank)) < 0 or (currweight + (((rating - 5) / 10) * horirank)) > 100:
+        return currweight
+    else:
+        return currweight + (((rating - 5) / 10) * horirank)
 
 
 def weight_from_mean(currweight, source):
