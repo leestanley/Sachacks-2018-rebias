@@ -13,7 +13,7 @@ body {
     height: 100%; **/
 
 
-    /** background-image: url(/static/images/background.jpg);
+    /** background-image: url(background.jpg);
     background-position: center, top;
     background-attachment: fixed;
     width: 100%;
@@ -138,7 +138,7 @@ body {
 
 
 .welcome-parallax {
-    background-image: url(static/images/background.jpg);
+    background-image: url(background.jpg);
     height: 650px;
     background-attachment: fixed;
     background-position: center;
@@ -172,19 +172,19 @@ body {
 
 
 .category-container1 {
-    background-image: url(static/images/pol.jpg);
+    background-image: url(pol.jpg);
 }
 
 .category-container2 {
-    background-image: url(static/images/sports.jpg);
+    background-image: url(sports.jpg);
 }
 
 .category-container3 {
-    background-image: url(static/images/econ.jpg);
+    background-image: url(econ.jpg);
 }
 
 .category-container4 {
-    background-image: url(static/images/tech.jpg);
+    background-image: url(tech.jpg);
 }
 
 .category-container1, .category-container2, .category-container3, .category-container4 a {
@@ -221,7 +221,7 @@ body {
 
 .news-container {
     width: 90.5%;
-    background-image: url(static/images/placeholder.jpg);
+    background-image: url(placeholder.jpg);
     background-position-x: 0;
     background-size: 500px;
     background-repeat: no-repeat;
