@@ -103,8 +103,6 @@ def checkSession():
 
 @app.route("/")
 def home():
-  print(session.get("currentWeight"))
-  print(session.get("doneList"))
   return render_template("index.html")
 
 
