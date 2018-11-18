@@ -79,16 +79,6 @@ body {
     position: relative;
 }
 
-.btn-signup, .submit-btn {
-    position: relative;
-    background-color: transparent;
-    background-image: none;
-    border-radius: 5px;
-    outline-width: thin;
-    width: 100px;
-    height: 40px;
-    left: -40px;
-}
 
 .readmore {
     position: relative;
@@ -107,10 +97,19 @@ body {
     border-color: #3498db;
 }
 
+.btn-signup, .submit-btn {
+    position: relative;
+    background-color: transparent;
+    background-image: none;
+    border-radius: 5px;
+    outline-width: thin;
+    width: 100px;
+    height: 40px;
+    left: -40px;
+}
+
 .submit-btn {
-    position: absolute;
-    margin-left: -600px;
-    margin-top: 53em;
+    position: absolute !important;
     z-index: 1000;
 }
 
@@ -118,9 +117,8 @@ body {
     color: #2ecc71;
     border-color: #2ecc71;
     width: 300px !important;
-    position: relative;
-    left: 43em;
-    bottom: -1em;
+    left: 1150px !important;
+    bottom: 30px;
 }
 
 .btn-signup:hover {
@@ -320,7 +318,7 @@ footer{
     width: 100%;
     height: 50px;
     background-color: #1d2935;
-    visibility: hidden;
+    visibility: show;
 }
 
 .progress {
@@ -347,7 +345,7 @@ footer{
 
 .x {
     position: fixed;
-    left: 74em;
+    left: 68em;
     font-size: 20px;
     text-decoration: none;
     border: none;

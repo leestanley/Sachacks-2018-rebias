@@ -147,6 +147,13 @@ def scrapText():
     if (articleUrl):
       return menuScraping.getSoup(articleUrl)
 
+@app.route("/api/getWeight")
+def getWeight():
+  checkSession()
+
+  if request.method == "GET":
+    return str(session["currentWeight"])
+
 if __name__ == "__main__":
   app.secret_key = os.urandom(24)
-  app.run(port=6762)
+  app.run(port=6789);
