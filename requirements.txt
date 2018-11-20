@@ -1,0 +1,4 @@
+Flask > 1.0.2
+beautifulsoup > 4.3.2
+datascience > 0.10.7
+matplotlib > 3.0.2
