@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <title> Rebias - Our Team </title>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ url_for('static', filename='favion.png') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Bitter|Oswald|Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body style="background-color: #bdc3c7; text-align: center;">
+  <nav class="navbar">
+      <a href="{{ url_for('static', filename='index.html') }}">
+        <img id="logo" src="{{ url_for('static', filename='rebiaslogo.png') }}">
+      </a>
+      <button type="button" class="btn-signup">Sign In</button>
+  </nav>
+  <a class="subtitle"> Meet the Team!</a>
+  <div class="mtd">
+    <div class="dev1">
+      <img id=pfp src="{{ url_for('static', filename='stanlee.jpg') }}"> <br>
+      <a id="nod"> Stanley Lee <br> 
+        <a id=c> Backend Programmer</a>
+      </a>
+    </div>
+  <div class="dev1">
+      <img id=pfp src=""{{ url_for('static', filename='jeff.jpg') }}"> <br>
+      <a id="nod"> Jeffrey Ha <br> 
+        <a id=c> Backend Programmer</a>
+      </a>
+    </div>
+  <div class="dev1">
+      <img id=pfp src=""{{ url_for('static', filename='jason.jpg') }}"> <br>
+      <a id="nod"> Jason Tran <br> 
+        <a id=c> Backend Programmer</a>
+      </a>
+    </div>
+  <div class="dev1">
+      <img id=pfp src=""{{ url_for('static', filename='deric.jpg') }}"> <br>
+      <a id="nod"> Deric Kwok <br> 
+        <a id=c> UI Designer</a>
+      </a>
+    </div>
+  </div>
+ </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</html>
