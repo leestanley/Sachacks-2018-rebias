@@ -97,7 +97,7 @@ def checkSession():
   if not ("startUp" in session):
     session["startUp"] = datetime.today()
   else:
-    if ((datetime.today() - session["startUp"]).days > 2:
+    if ((datetime.today() - session["startUp"]).days > 2):
       session.clear()
       session["startUp"] = datetime.today()
     
